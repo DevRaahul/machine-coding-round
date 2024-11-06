@@ -1,7 +1,12 @@
+import MemoryBoxGame from "./components/MemoryBoxGame";
 import "./App.css";
 
 function App() {
-  return <>Test</>;
+  return (
+    <>
+      <MemoryBoxGame />
+    </>
+  );
 }
 
 export default App;
