@@ -1,4 +1,6 @@
-export const boxMockData = [
+import { IBoxData } from "./interface";
+
+export const boxMockData: IBoxData[] = [
   { id: 1, isClicked: false, order: -1, isVisible: true },
   { id: 2, isClicked: false, order: -1, isVisible: true },
   { id: 3, isClicked: false, order: -1, isVisible: true },

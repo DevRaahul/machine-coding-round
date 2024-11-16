@@ -1,10 +1,10 @@
-import MemoryBoxGame from "./components/MemoryBoxGame";
 import "./App.css";
+import AppRoutes from "./AppRoutes";
 
 function App() {
   return (
     <>
-      <MemoryBoxGame />
+      <AppRoutes />
     </>
   );
 }
