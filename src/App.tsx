@@ -1,10 +1,13 @@
 import "./App.css";
 import AppRoutes from "./AppRoutes";
+import { ThemeProvider } from "./context/themeProvider";
 
 function App() {
   return (
     <>
-      <AppRoutes />
+      <ThemeProvider>
+        <AppRoutes />
+      </ThemeProvider>
     </>
   );
 }

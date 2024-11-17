@@ -6,6 +6,11 @@ export interface IQuestion {
   techStack: string[];
 }
 
+export interface IThemeIcon {
+  mode: string;
+  themeChange: any;
+}
+
 export interface IBoxData {
   id: number;
   isClicked: boolean;
