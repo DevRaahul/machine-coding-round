@@ -60,17 +60,25 @@ const MemoryBoxGame = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="grid-container">
-          {boxData.map((dt, idx) => {
-            return dt?.isVisible ? (
-              <div key={dt.id} className={`grid-item ${dt?.isClicked ? "black" : "white"}`} onClick={() => boxClicked(idx)}>
-                {dt.id}
-              </div>
-            ) : (
-              <div key={dt.id}></div>
-            );
-          })}
+      <div className="h-[90vh]">
+        <div className="h-full flex justify-center items-center">
+          <div className="grid grid-cols-3 grid-rows-3 gap-2">
+            {boxData.map((dt, idx) => {
+              return dt?.isVisible ? (
+                <div
+                  key={dt.id}
+                  className={`size-[100px] flex justify-center items-center rounded ${
+                    dt?.isClicked ? "bg-stone-600	text-slate-50" : "bg-green-700 text-slate-200	"
+                  }`}
+                  onClick={() => boxClicked(idx)}
+                >
+                  {dt.id}
+                </div>
+              ) : (
+                <div key={dt.id}></div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>

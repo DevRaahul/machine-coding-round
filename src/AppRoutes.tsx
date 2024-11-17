@@ -2,20 +2,22 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/common/Home";
 import Navbar from "./components/common/Navbar";
 import MemoryBoxGame from "./components/questions/MemoryBoxGame";
+import PageNotFound from "./components/common/PageNotFound";
+import LoginPage from "./components/common/LoginPage";
 
 const AppRoutes = () => {
   return (
     <>
       <BrowserRouter>
-        <div>
-          <Navbar />
-          <div data-testid="questions-container" id="questions-container" className=" flex justify-center items-center">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/sequence_game" element={<MemoryBoxGame />} />
-            </Routes>
-          </div>
-        </div>
+        <Navbar />
+        {/* <div className="h-screen"> */}
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/sequence_game" element={<MemoryBoxGame />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+        {/* </div> */}
       </BrowserRouter>
     </>
   );

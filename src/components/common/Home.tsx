@@ -11,7 +11,7 @@ const Home = () => {
   };
 
   return (
-    <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
+    <div className="grid gap-2 grid-cols-1 md:grid-cols-3">
       {questionList.map((question) => {
         return (
           <>
