@@ -3,6 +3,7 @@ export interface IQuestion {
   name: string;
   path: string;
   description: string;
+  techStack: string[];
 }
 
 export interface IBoxData {

@@ -19,14 +19,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
 .black {
-  background-color: black;
-  color: #f4eeee;
+  background-color: #6b7280;
+  color: #000;
 }
 
 .white {
-  background-color: #fff;
+  background-color: #818cf8;
   color: #000;
 }

@@ -11,7 +11,7 @@ export default function Navbar() {
             <span className="sr-only">Coding Gyan</span>
             <span className="text-left m-2">Coding Gyan</span>
           </div>
-          <div className="flex items-center gap-4 sm:hidden">
+          <div className="hidden md:flex items-center gap-4">
             <Button variant="outline" size="sm">
               Sign in
             </Button>
