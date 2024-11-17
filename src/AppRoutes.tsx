@@ -9,7 +9,7 @@ const AppRoutes = () => {
       <BrowserRouter>
         <div>
           <Navbar />
-          <div className=" flex justify-center items-center">
+          <div data-testid="questions-container" id="questions-container" className=" flex justify-center items-center">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/sequence_game" element={<MemoryBoxGame />} />

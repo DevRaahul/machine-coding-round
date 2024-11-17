@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Sun } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -9,7 +10,10 @@ export default function Navbar() {
           <div className="flex items-center">
             <MountainIcon className="h-6 w-6" />
             <span className="sr-only">Coding Gyan</span>
-            <span className="text-left m-2">Coding Gyan</span>
+            {/* TODO: Navigation checks */}
+            <Link to={"/"}>
+              <span className="text-left m-2">Coding Gyan</span>
+            </Link>
           </div>
           <div className="hidden md:flex items-center gap-4">
             <Button variant="outline" size="sm">
