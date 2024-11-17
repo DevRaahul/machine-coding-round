@@ -1,10 +1,13 @@
 import { questionList } from "@/constant/questionList";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   const navigateHandler = (path: string): void => {
-    console.log(path);
+    navigate(path);
   };
 
   return (
@@ -15,11 +18,14 @@ const Home = () => {
             <Card className="m-2">
               <CardHeader>
                 <CardTitle className="text-center mb-1">{question.name}</CardTitle>
-                <CardDescription className="text-center mb-1">{question.description}</CardDescription>
+                <CardDescription className="text-center mb-1">{`Tech used: ${question.techStack.join(", ")}`}</CardDescription>
               </CardHeader>
               <CardContent>
-                <Button onClick={() => navigateHandler(question.path)}>Open</Button>
+                <p>{question.description}</p>
               </CardContent>
+              <CardFooter>
+                <Button onClick={() => navigateHandler(question.path)}>Open</Button>
+              </CardFooter>
             </Card>
           </>
         );

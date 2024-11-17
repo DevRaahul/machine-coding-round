@@ -1,7 +1,20 @@
 import { Button } from "@/components/ui/button";
-import { Sun } from "lucide-react";
+import { IThemeIcon } from "@/constant/interface";
+import { useTheme } from "@/context/themeProvider";
+import { Moon, Sun } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const { setTheme } = useTheme();
+  const [themeIcon, setThemeIcon] = useState("light");
+
+  const themeToggle = () => {
+    const theme = themeIcon === "light" ? "dark" : "light";
+    setTheme(theme);
+    setThemeIcon(theme);
+  };
+
   return (
     <nav className="sticky inset-x-0 top-0 z-50 bg-white shadow-sm dark:bg-gray-950/90 mb-2">
       <div className="w-full max-w-7xl mx-auto px-4">
@@ -9,14 +22,17 @@ export default function Navbar() {
           <div className="flex items-center">
             <MountainIcon className="h-6 w-6" />
             <span className="sr-only">Coding Gyan</span>
-            <span className="text-left m-2">Coding Gyan</span>
+            {/* TODO: Navigation checks */}
+            <Link to={"/"}>
+              <span className="text-left m-2">Coding Gyan</span>
+            </Link>
           </div>
-          <div className="flex items-center gap-4 sm:hidden">
+          <div className="hidden md:flex items-center gap-4">
             <Button variant="outline" size="sm">
               Sign in
             </Button>
             <Button size="sm">Sign up</Button>
-            <ThemeIcon />
+            <ThemeIcon themeChange={themeToggle} mode={themeIcon} />
           </div>
         </div>
       </div>
@@ -43,10 +59,10 @@ function MountainIcon(props: any) {
   );
 }
 
-function ThemeIcon() {
+function ThemeIcon({ mode, themeChange }: IThemeIcon) {
   return (
-    <span className="cursor-pointer">
-      <Sun />
+    <span className="cursor-pointer" onClick={themeChange}>
+      {mode === "light" ? <Sun /> : <Moon />}
     </span>
   );
 }
