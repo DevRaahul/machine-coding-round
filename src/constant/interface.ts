@@ -10,6 +10,9 @@ export interface IThemeIcon {
   mode: string;
   themeChange: any;
 }
+export interface ILogoutIcon {
+  logoutHandler: any;
+}
 
 export interface IBoxData {
   id: number;

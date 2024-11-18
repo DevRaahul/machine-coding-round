@@ -1,18 +1,25 @@
 import { Button } from "@/components/ui/button";
-import { IThemeIcon } from "@/constant/interface";
+import { ILogoutIcon, IThemeIcon } from "@/constant/interface";
 import { useTheme } from "@/context/themeProvider";
-import { Moon, Sun } from "lucide-react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { LogOut, Moon, Sun } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const { logout, isAuthenticated } = useAuth0();
+
   const { setTheme } = useTheme();
-  const [themeIcon, setThemeIcon] = useState("light");
+  const [themeIcon, setThemeIcon] = useState("dark");
 
   const themeToggle = () => {
     const theme = themeIcon === "light" ? "dark" : "light";
     setTheme(theme);
     setThemeIcon(theme);
+  };
+
+  const logOutFunction = () => {
+    logout({ logoutParams: { returnTo: window.location.origin } });
   };
 
   return (
@@ -28,11 +35,16 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="outline" size="sm">
-              Sign in
-            </Button>
-            <Button size="sm">Sign up</Button>
+            {!isAuthenticated && (
+              <>
+                <Button variant="outline" size="sm">
+                  Sign in
+                </Button>
+                <Button size="sm">Sign up</Button>
+              </>
+            )}
             <ThemeIcon themeChange={themeToggle} mode={themeIcon} />
+            {isAuthenticated && <LogoutIcon logoutHandler={logOutFunction} />}
           </div>
         </div>
       </div>
@@ -63,6 +75,13 @@ function ThemeIcon({ mode, themeChange }: IThemeIcon) {
   return (
     <span className="cursor-pointer" onClick={themeChange}>
       {mode === "light" ? <Sun /> : <Moon />}
+    </span>
+  );
+}
+function LogoutIcon({ logoutHandler }: ILogoutIcon) {
+  return (
+    <span className="cursor-pointer" onClick={logoutHandler}>
+      <LogOut />
     </span>
   );
 }
