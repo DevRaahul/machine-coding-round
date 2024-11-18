@@ -15,7 +15,7 @@ const Home = () => {
       {questionList.map((question) => {
         return (
           <>
-            <Card className="m-2">
+            <Card key={question.id} className="m-2">
               <CardHeader>
                 <CardTitle className="text-center mb-1">{question.name}</CardTitle>
                 <CardDescription className="text-center mb-1">{`Tech used: ${question.techStack.join(", ")}`}</CardDescription>

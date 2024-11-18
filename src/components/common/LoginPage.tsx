@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui
 import LoginForm from "./LoginForm";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import LoadingScreen from "./LoadingScreen";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const LoginPage = () => {
         <div className="h-full flex justify-center items-center flex-col">
           {isLoading ? (
             <>
-              <div className="text-3xl"> Loading ... </div>
+              <LoadingScreen />
             </>
           ) : (
             <Card>
