@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { IThemeIcon } from "@/constant/interface";
 import { useTheme } from "@/context/themeProvider";
+import { useAuth0 } from "@auth0/auth0-react";
 import { Moon, Sun } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const { logout } = useAuth0();
+
   const { setTheme } = useTheme();
-  const [themeIcon, setThemeIcon] = useState("light");
+  const [themeIcon, setThemeIcon] = useState("dark");
 
   const themeToggle = () => {
     const theme = themeIcon === "light" ? "dark" : "light";
@@ -31,7 +34,9 @@ export default function Navbar() {
             <Button variant="outline" size="sm">
               Sign in
             </Button>
-            <Button size="sm">Sign up</Button>
+            <Button size="sm" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+              Sign up
+            </Button>
             <ThemeIcon themeChange={themeToggle} mode={themeIcon} />
           </div>
         </div>
