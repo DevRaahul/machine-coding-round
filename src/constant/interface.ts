@@ -20,3 +20,5 @@ export interface IBoxData {
   order: number;
   isVisible: boolean;
 }
+
+export interface IToastNotification {}
