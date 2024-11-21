@@ -4,11 +4,14 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 const AuthGuard = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
 
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("login");
+    }
+    if (isLoading) {
+      navigate("/loading");
     }
   }, []);
   return <Outlet />;

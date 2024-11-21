@@ -5,7 +5,6 @@ import MemoryBoxGame from "../components/questions/MemoryBoxGame";
 import PageNotFound from "../components/common/PageNotFound";
 import LoginPage from "../components/common/LoginPage";
 import ToastNotification from "../components/questions/ToastNotification/ToastNotificationContainer";
-import AuthGuard from "./AuthGuard";
 
 const AppRoutes = () => {
   return (
@@ -14,7 +13,7 @@ const AppRoutes = () => {
         <Navbar />
         {/* <div className="h-screen"> */}
         <Routes>
-          <Route path="/" element={<AuthGuard />} />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/sequence_game" element={<MemoryBoxGame />} />
