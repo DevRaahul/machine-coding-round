@@ -1,4 +1,3 @@
-import { IToastNotification } from "@/constant/interface";
 import { Button } from "../../ui/button";
 
 const ToastNotificationContainer = () => {

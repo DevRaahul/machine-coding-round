@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { boxMockData } from "../../constant/constant";
+import { boxMockData } from "../../../constant/constant";
 
 const MemoryBoxGame = () => {
   const [boxData, setBoxData] = useState(boxMockData);
