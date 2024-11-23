@@ -35,14 +35,6 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="hidden md:flex items-center gap-4">
-            {!isAuthenticated && (
-              <>
-                <Button variant="outline" size="sm">
-                  Sign in
-                </Button>
-                <Button size="sm">Sign up</Button>
-              </>
-            )}
             <ThemeIcon themeChange={themeToggle} mode={themeIcon} />
             {isAuthenticated && <LogoutIcon logoutHandler={logOutFunction} />}
           </div>

@@ -11,7 +11,6 @@ const AppRoutes = () => {
     <>
       <BrowserRouter>
         <Navbar />
-        {/* <div className="h-screen"> */}
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -20,7 +19,6 @@ const AppRoutes = () => {
           <Route path="/toast" element={<ToastNotification />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-        {/* </div> */}
       </BrowserRouter>
     </>
   );
