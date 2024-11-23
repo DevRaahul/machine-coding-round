@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { KeySquare } from "lucide-react";
 
 const LoginForm = () => {
   const { loginWithRedirect } = useAuth0();
@@ -52,6 +53,7 @@ const LoginForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Username</FormLabel>
+                <FormDescription>use dummy credentials: admin</FormDescription>
                 <FormControl>
                   <Input placeholder="Username" {...field} />
                 </FormControl>
@@ -65,6 +67,7 @@ const LoginForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Password</FormLabel>
+                <FormDescription>use dummy credentials: admin123</FormDescription>
                 <FormControl>
                   <Input placeholder="Password" {...field} />
                 </FormControl>
@@ -77,7 +80,8 @@ const LoginForm = () => {
           </Button>
           <p className="text-center m-1">or</p>
           <Button type="button" onClick={() => loginWithRedirect()} className="w-full">
-            Login with Gmail
+            <KeySquare />
+            Continue with Google
           </Button>
         </form>
       </Form>

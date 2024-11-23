@@ -1,6 +1,6 @@
 import { Auth0Provider } from "@auth0/auth0-react";
 import "./App.css";
-import AppRoutes from "./AppRoutes";
+import AppRoutes from "./routes/AppRoutes";
 import { ThemeProvider } from "./context/themeProvider";
 
 function App() {
