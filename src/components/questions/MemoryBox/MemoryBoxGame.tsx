@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { boxMockData } from "../../../constant/constant";
 
-const MemoryBoxGame = () => {
+const MemoryBoxGame: React.FC = () => {
   const [boxData, setBoxData] = useState(boxMockData);
   const orderRef = useRef(0);
   const counterRef = useRef(0);
