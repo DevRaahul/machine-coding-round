@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import Tile from "./Tile";
 
 const TicTocContainer = () => {
-  return <div>TicTocContainer</div>;
+  const [gameState, setGameState] = useState(new Array(new Array(9).fill(null)));
+  return (
+    <div className="flex justify-center items-center">
+      {gameState?.map((dt, idx) => {
+        return <Tile />;
+      })}
+    </div>
+  );
 };
 
 export default TicTocContainer;
