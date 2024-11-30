@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Tile from "./Tile";
 
 const TicTocContainer = () => {
-  const [gameState, setGameState] = useState(new Array(new Array(9).fill(null)));
+  const [gameState, setGameState] = useState([" ", " ", " "]);
   return (
-    <div className="flex justify-center items-center">
+    <div className="grid grid-cols-3 grid-rows-3 gap-1">
       {gameState?.map((dt, idx) => {
-        return <Tile />;
+        return <Tile text={idx} />;
       })}
     </div>
   );
