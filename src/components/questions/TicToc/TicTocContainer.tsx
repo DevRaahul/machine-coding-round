@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import Tile from "./Tile";
-import { Redo, Undo } from "lucide-react";
+import { Redo, RotateCcw, Undo } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const TicTocContainer = () => {
@@ -23,14 +23,17 @@ const TicTocContainer = () => {
 
   const checkWinner = (gameData: string[]) => {
     winnerConditions.forEach((condition) => {
-      if (
-        gameData[condition[0]] === gameData[condition[1]] &&
-        gameData[condition[0]] === gameData[condition[2]] &&
-        gameState[condition[0]] !== null
-      ) {
+      if (gameData[condition[0]] === gameData[condition[1]] && gameData[condition[0]] === gameData[condition[2]] && gameData[condition[0]] !== null) {
         setWinner(gameState[condition[0]]);
       } else {
-        setWinner("");
+        let allBoxChecked: boolean = true;
+
+        gameData.forEach((dt) => {
+          if (dt === null) allBoxChecked = false;
+        });
+        if (allBoxChecked) {
+          setWinner("D");
+        }
       }
     });
   };
@@ -62,6 +65,14 @@ const TicTocContainer = () => {
     checkWinner(data);
   };
 
+  const resetGame = () => {
+    setPlayer("X");
+    undoRef.current = [];
+    redoRef.current = [];
+    setGameState(new Array(9).fill(null));
+    setWinner("");
+  };
+
   return (
     <div className="h-[90vh]">
       <div className="h-full flex justify-center items-center">
@@ -70,19 +81,32 @@ const TicTocContainer = () => {
             <Tile index={idx} text={dt} changeState={setData} />
           ))}
         </div>
-        <div>
+        <div className="p-4">
           <div className="text-center">
             <p>{!winner && `The Player ${player} turn.`}</p>
-            <p>{winner && `The winner is Player ${winner}`}</p>
+            <p>{(winner === "X" || winner === "O") && `The winner is Player ${winner}`}</p>
+            <p>{winner === "D" && `The game is draw.`}</p>
           </div>
-          <Button className="m-2" onClick={undoHandler} disabled={undoRef.current.length === 0}>
-            Undo
-            <Undo />
-          </Button>
-          <Button className="m-2" onClick={redoHandler} disabled={redoRef.current.length === 0}>
-            Redo
-            <Redo />
-          </Button>
+          {!winner && (
+            <div>
+              <Button className="m-2" onClick={undoHandler} disabled={undoRef.current.length === 0}>
+                Undo
+                <Undo />
+              </Button>
+              <Button className="m-2" onClick={redoHandler} disabled={redoRef.current.length === 0}>
+                Redo
+                <Redo />
+              </Button>
+            </div>
+          )}
+          {winner && (
+            <div>
+              <Button className="m-2" onClick={resetGame} disabled={winner === ""}>
+                Reset
+                <RotateCcw />
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
