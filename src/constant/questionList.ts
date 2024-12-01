@@ -19,10 +19,10 @@ export const questionList: IQuestion[] = [
   },
   {
     id: 1,
-    name: "Memory Sequence Game",
-    path: "/sequence_game",
+    name: "Tic Tac Toe",
+    path: "/tictoc",
     techStack: ["React", "Javascript", "HTML & CSS"],
     description:
-      "This is the memory sequence game where we can click boxes in any order and once all boxes are clicked they will unchecked in same/reverse order depending on our program logic.",
+      "This is the tic toc game where we can click boxes in any order and once the winning condition is met winner is declared and game is then stops. We can reset the game or undo the recent move.",
   },
 ];
