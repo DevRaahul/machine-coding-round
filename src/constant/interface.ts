@@ -22,3 +22,13 @@ export interface IBoxData {
 }
 
 export interface IToastNotification {}
+
+export interface ICountry {
+  id: number;
+  name: string;
+  population: number;
+  land_area: number;
+  density: number;
+  capital: string;
+  currency: string;
+}

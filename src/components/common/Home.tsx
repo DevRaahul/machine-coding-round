@@ -20,7 +20,7 @@ const Home = () => {
                 <CardTitle className="text-center mb-1">{question.name}</CardTitle>
                 <CardDescription className="text-center mb-1">{`Tech used: ${question.techStack.join(", ")}`}</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="h-28 overflow-y-auto mb-1">
                 <p>{question.description}</p>
               </CardContent>
               <CardFooter>
