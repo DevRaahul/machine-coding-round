@@ -18,11 +18,19 @@ export const questionList: IQuestion[] = [
       "In this question we will create our own custom toast notification component. This component will have different varient like 'Success', 'Warning', 'Info' and 'Error'.",
   },
   {
-    id: 1,
+    id: 3,
     name: "Tic Tac Toe",
     path: "/tictoc",
     techStack: ["React", "Javascript", "HTML & CSS"],
     description:
       "This is the tic toc game where we can click boxes in any order and once the winning condition is met winner is declared and game is then stops. We can reset the game or undo the recent move.",
+  },
+  {
+    id: 4,
+    name: "Custom Progressbar",
+    path: "/progress",
+    techStack: ["React", "Javascript", "HTML & CSS"],
+    description:
+      "This is the custom component created for progress bar. Progress bar can be used to show the on going progress of any data fetching action.",
   },
 ];
