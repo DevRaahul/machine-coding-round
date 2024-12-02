@@ -6,6 +6,7 @@ import PageNotFound from "../components/common/PageNotFound";
 import LoginPage from "../components/common/LoginPage";
 import ToastNotification from "../components/questions/ToastNotification/ToastNotificationContainer";
 import TicTocContainer from "@/components/questions/TicToc/TicTocContainer";
+import ProgressBarContainer from "@/components/questions/progressBar/ProgressBarContainer";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
           <Route path="/sequence_game" element={<MemoryBoxGame />} />
           <Route path="/toast" element={<ToastNotification />} />
           <Route path="/tictoc" element={<TicTocContainer />} />
+          <Route path="/progressBar" element={<ProgressBarContainer />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
