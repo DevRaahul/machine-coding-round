@@ -27,7 +27,7 @@ export const questionList: IQuestion[] = [
   },
   {
     id: 4,
-    name: "Custom Progressbar",
+    name: "Custom Progress Bar",
     path: "/progress",
     techStack: ["React", "Javascript", "HTML & CSS"],
     description:
