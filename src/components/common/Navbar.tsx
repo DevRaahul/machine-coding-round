@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { ILogoutIcon, IThemeIcon } from "@/constant/interface";
 import { useTheme } from "@/context/themeProvider";
 import { useAuth0 } from "@auth0/auth0-react";
