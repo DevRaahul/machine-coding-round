@@ -68,7 +68,7 @@ const MemoryBoxGame: React.FC = () => {
                 <div
                   key={dt.id}
                   className={`size-[100px] flex justify-center items-center rounded ${
-                    dt?.isClicked ? "bg-stone-600	text-slate-50" : "bg-green-700 text-slate-200	"
+                    dt?.isClicked ? "bg-stone-600	text-slate-50" : "bg-green-700 text-slate-200"
                   }`}
                   onClick={() => boxClicked(idx)}
                 >
