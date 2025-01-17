@@ -1,4 +1,11 @@
-const explorer = [
+export interface IFileData {
+  id: string;
+  name: string;
+  isFolder: boolean;
+  items: IFileData[];
+}
+
+const explorer: IFileData[] = [
   {
     id: "1",
     name: "root",
