@@ -3,7 +3,7 @@ import Tile from "./Tile";
 import { Redo, RotateCcw, Undo } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const TicTocContainer = () => {
+const TicTocContainer: React.FC = () => {
   const winnerConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -21,7 +21,7 @@ const TicTocContainer = () => {
   const undoRef = useRef<any>([]);
   const redoRef = useRef<any>([]);
 
-  const checkWinner = (gameData: string[]) => {
+  const checkWinner = (gameData: string[]): void => {
     winnerConditions.forEach((condition) => {
       if (gameData[condition[0]] === gameData[condition[1]] && gameData[condition[0]] === gameData[condition[2]] && gameData[condition[0]] !== null) {
         setWinner(gameState[condition[0]]);
@@ -38,7 +38,7 @@ const TicTocContainer = () => {
     });
   };
 
-  const setData = (idx: number) => {
+  const setData = (idx: number): void => {
     if (gameState[idx] !== null || winner !== "") return;
     undoRef.current.push(gameState);
 
@@ -49,7 +49,7 @@ const TicTocContainer = () => {
     checkWinner(copyData);
   };
 
-  const undoHandler = () => {
+  const undoHandler = (): void => {
     setPlayer(player === "X" ? "O" : "X");
     let data = undoRef.current.pop();
     redoRef.current.push(gameState);
@@ -57,7 +57,7 @@ const TicTocContainer = () => {
     checkWinner(data);
   };
 
-  const redoHandler = () => {
+  const redoHandler = (): void => {
     setPlayer(player === "X" ? "O" : "X");
     let data = redoRef.current.pop();
     undoRef.current.push(gameState);
@@ -65,7 +65,7 @@ const TicTocContainer = () => {
     checkWinner(data);
   };
 
-  const resetGame = () => {
+  const resetGame = (): void => {
     setPlayer("X");
     undoRef.current = [];
     redoRef.current = [];

@@ -13,7 +13,7 @@ const MemoryBoxGame: React.FC = () => {
     }
   }, []);
 
-  const setDataCount = () => {
+  const setDataCount = (): void => {
     boxMockData.forEach((dt) => {
       if (dt.isVisible) {
         counterRef.current++;
@@ -21,7 +21,7 @@ const MemoryBoxGame: React.FC = () => {
     });
   };
 
-  const reset = () => {
+  const reset = (): void => {
     const cloneData = [...boxData];
     // cloneData.sort((a, b) => b.order - a.order); to reset box in LIFO fashion
     cloneData.sort((a, b) => a.order - b.order); // to reset box in FIFO fashion
@@ -42,7 +42,7 @@ const MemoryBoxGame: React.FC = () => {
     isResetCalled.current = false;
   };
 
-  const boxClicked = (id: number) => {
+  const boxClicked = (id: number): void => {
     if (isResetCalled.current) {
       return;
     }
@@ -68,7 +68,7 @@ const MemoryBoxGame: React.FC = () => {
                 <div
                   key={dt.id}
                   className={`size-[100px] flex justify-center items-center rounded ${
-                    dt?.isClicked ? "bg-stone-600	text-slate-50" : "bg-green-700 text-slate-200	"
+                    dt?.isClicked ? "bg-stone-600	text-slate-50" : "bg-green-700 text-slate-200"
                   }`}
                   onClick={() => boxClicked(idx)}
                 >

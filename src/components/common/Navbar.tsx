@@ -22,7 +22,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky inset-x-0 top-0 z-50 bg-white shadow-sm dark:bg-gray-950/90 mb-2">
+    <nav className="sticky inset-x-0 top-0 z-50 mb-2  border-black shadow-[0_10px_20px_-15px_rgba(0,0,0,0.3)]">
       <div className="w-full max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-14 items-center">
           <div className="flex items-center">
@@ -30,7 +30,7 @@ export default function Navbar() {
             <span className="sr-only">Coding Gyan</span>
             {/* TODO: Navigation checks */}
             <Link to={"/"}>
-              <span className="text-left m-2">Coding Gyan</span>
+              <span className="text-left m-2 text-lg font-medium">Coding Gyan</span>
             </Link>
           </div>
           <div className="hidden md:flex items-center gap-4">

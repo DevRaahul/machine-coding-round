@@ -33,4 +33,12 @@ export const questionList: IQuestion[] = [
     description:
       "This is the custom component created for progress bar. Progress bar can be used to show the on going progress of any data fetching action.",
   },
+  {
+    id: 5,
+    name: "File Manager",
+    path: "/explorer",
+    techStack: ["React", "Javascript", "HTML & CSS"],
+    description:
+      "This is the file explorer component created to show custom file structure. We have used dummy response to mimic the folder structure response.",
+  },
 ];

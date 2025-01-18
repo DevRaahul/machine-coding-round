@@ -3,7 +3,7 @@ interface ITile {
   changeState: any;
   index: number;
 }
-const Tile = (props: ITile) => {
+const Tile: React.FC<ITile> = (props) => {
   const { text, changeState, index } = props;
 
   const changeStateHandler = () => {
