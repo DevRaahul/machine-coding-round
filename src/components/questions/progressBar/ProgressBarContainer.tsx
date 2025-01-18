@@ -1,6 +1,6 @@
-import React from "react";
+import { FC } from "react";
 
-const ProgressBarContainer = () => {
+const ProgressBarContainer: FC = () => {
   return <div>ProgressBarContainer</div>;
 };
 

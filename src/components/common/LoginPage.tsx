@@ -1,11 +1,11 @@
+import { FC, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import LoginForm from "./LoginForm";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LoadingScreen from "./LoadingScreen";
 
-const LoginPage = () => {
+const LoginPage: FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated, isLoading } = useAuth0();
 
