@@ -22,7 +22,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky inset-x-0 top-0 z-50 mb-2  border-black shadow-[0_10px_20px_-15px_rgba(0,0,0,0.3)]">
+    <nav
+      className={`sticky inset-x-0 top-0 z-50 mb-16 ${
+        themeIcon === "light"
+          ? "border-black shadow-[0_10px_20px_-15px_rgba(0,0,0,0.3)]"
+          : "border-white shadow-[0_10px_20px_-15px_rgba(255,255,255,0.8)]"
+      }`}
+    >
       <div className="w-full max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-14 items-center">
           <div className="flex items-center">

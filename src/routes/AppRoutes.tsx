@@ -14,17 +14,19 @@ const AppRoutes = () => {
     <>
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/sequence_game" element={<MemoryBoxGame />} />
-          <Route path="/toast" element={<ToastNotification />} />
-          <Route path="/tictoc" element={<TicTocContainer />} />
-          <Route path="/progressBar" element={<ProgressBarContainer />} />
-          <Route path="/explorer" element={<FileManagerContainer />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
+        <div className="flex items-center justify-center">
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/sequence_game" element={<MemoryBoxGame />} />
+            <Route path="/toast" element={<ToastNotification />} />
+            <Route path="/tictoc" element={<TicTocContainer />} />
+            <Route path="/progressBar" element={<ProgressBarContainer />} />
+            <Route path="/explorer" element={<FileManagerContainer />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </>
   );
