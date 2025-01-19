@@ -1,7 +1,8 @@
 import { questionList } from "@/constant/questionList";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
-import { Button } from "../ui/button";
-import { useNavigate } from "react-router-dom";
+import { Button, buttonVariants } from "../ui/button";
+import { Link, useNavigate } from "react-router-dom";
+import { Github } from "lucide-react";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -24,7 +25,12 @@ const Home = () => {
                 <p>{question.description}</p>
               </CardContent>
               <CardFooter>
-                <Button onClick={() => navigateHandler(question.path)}>Open</Button>
+                <div className="flex gap-8">
+                  <Button onClick={() => navigateHandler(question.path)}>Open</Button>
+                  <Link className={buttonVariants({ variant: "outline" })} to={"https://github.com/DevRaahul/machine-coding-round"} target="_blank">
+                    <Github /> GitHub Repo
+                  </Link>
+                </div>
               </CardFooter>
             </Card>
           </>
