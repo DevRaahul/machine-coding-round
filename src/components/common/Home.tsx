@@ -1,3 +1,4 @@
+import { useTransition } from "react";
 import { questionList } from "@/constant/questionList";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { Button, buttonVariants } from "../ui/button";
@@ -5,10 +6,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { Github } from "lucide-react";
 
 const Home = () => {
+  const [isPending, startTransition] = useTransition();
+
   const navigate = useNavigate();
 
   const navigateHandler = (path: string): void => {
-    navigate(path);
+    startTransition(() => {
+      navigate(path);
+    });
   };
 
   return (
@@ -16,6 +21,7 @@ const Home = () => {
       {questionList.map((question) => {
         return (
           <>
+            {isPending && <p>Loading...</p>}
             <Card key={question.id} className="m-2">
               <CardHeader>
                 <CardTitle className="text-center mb-1">{question.name}</CardTitle>
