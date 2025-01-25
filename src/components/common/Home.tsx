@@ -21,7 +21,6 @@ const Home = () => {
       {questionList.map((question) => {
         return (
           <>
-            {isPending && <p>Loading...</p>}
             <Card key={question.id} className="m-2">
               <CardHeader>
                 <CardTitle className="text-center mb-1">{question.name}</CardTitle>

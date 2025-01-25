@@ -10,6 +10,7 @@ const ToastNotification = React.lazy(() => import("../components/questions/Toast
 const TicTocContainer = React.lazy(() => import("../components/questions/TicToc/TicTocContainer"));
 const FileManagerContainer = React.lazy(() => import("../components/questions/FileManager/FileManagerContainer"));
 const ProgressBarContainer = React.lazy(() => import("../components/questions/progressBar/ProgressBarContainer"));
+const StopwatchContainer = React.lazy(() => import("../components/questions/Stopwatch/StopwatchContainer"));
 
 const AppRoutes = () => {
   return (
@@ -26,6 +27,7 @@ const AppRoutes = () => {
             <Route path="/tictoc" element={<TicTocContainer />} />
             <Route path="/progressBar" element={<ProgressBarContainer />} />
             <Route path="/explorer" element={<FileManagerContainer />} />
+            <Route path="/stopwatch" element={<StopwatchContainer />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>
