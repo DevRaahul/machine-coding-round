@@ -1,16 +1,14 @@
-import { useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { number } from "zod";
+import { useEffect, useRef, useState } from "react";
+import Stopwatch from "./Stopwatch";
 
 interface ITimerState {
   hour: number;
   min: number;
   sec: number;
+  [key: string]: number;
 }
 const StopwatchContainer = () => {
-  let secTimer = useRef<ReturnType<typeof setInterval>>();
-  let minTimer = useRef<ReturnType<typeof setInterval>>();
-  let hourTimer = useRef<ReturnType<typeof setInterval>>();
+  let timerRef = useRef<ReturnType<typeof setInterval>>();
 
   const [time, setTime] = useState<ITimerState>({
     hour: 0,
@@ -19,14 +17,41 @@ const StopwatchContainer = () => {
   });
   const [isStarted, setIsStarted] = useState<boolean>(false);
 
-  const convertMin = (userInput: number, obj: ITimerState): void => {
-    let hour = Math.floor(userInput / 60);
-    let min = userInput % 60;
+  useEffect(() => {
+    if (isStarted) {
+      //Start timer
+      if (time.sec === 0 && time.min === 0 && time.hour === 0) {
+        return;
+      }
+      timerRef.current = setInterval(() => {
+        setTime((prev) => {
+          let copyTime = { ...prev };
 
-    obj.hour = hour + time.hour;
-    obj.min = min;
-    setTime({ ...obj });
-  };
+          copyTime.sec--;
+          if (copyTime.sec < 0) {
+            copyTime.min--;
+            copyTime.sec = 59;
+          }
+          if (copyTime.min < 0) {
+            copyTime.hour--;
+            copyTime.min = 59;
+          }
+
+          if (copyTime.hour < 0) {
+            clearInterval(timerRef.current);
+            alert("Timeout completed ...!");
+            setIsStarted(!isStarted);
+            return { hour: 0, min: 0, sec: 0 };
+          }
+          return copyTime;
+        });
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(timerRef.current);
+    };
+  }, [isStarted]);
 
   const setTimeHandler = (eve: React.ChangeEvent<HTMLInputElement>): void => {
     const { value, name } = eve.target;
@@ -36,121 +61,26 @@ const StopwatchContainer = () => {
       return;
     }
 
-    const userInput: number = parseInt(value) || 0;
+    const userInput: number = parseInt(value, 10) || 0;
 
-    let obj = {
-      hour: 0,
-      min: 0,
-      sec: 0,
-    };
+    let timeClone: ITimerState = { ...time };
+    timeClone[name] = userInput;
 
-    setTime((prev) => {
-      return {
-        ...prev,
-        [name]: userInput,
-      };
-    });
+    timeClone.min = timeClone.min + Math.floor(timeClone.sec / 60);
+    timeClone.sec = timeClone.sec % 60;
 
-    if (name === "sec" && userInput >= 60) {
-      let min = Math.floor(userInput / 60);
-      let actualSec = userInput % 60;
+    timeClone.hour = timeClone.hour + Math.floor(timeClone.min / 60);
+    timeClone.min = timeClone.min % 60;
 
-      obj.min = min + time.min;
-      obj.sec = actualSec;
-
-      if (obj.min > 60) {
-        convertMin(userInput, obj);
-      }
-
-      setTime({ ...obj });
-    }
-
-    if (name === "min" && userInput >= 60) {
-      convertMin(userInput, obj);
-    }
-  };
-
-  const secTimerFun = (): void => {
-    secTimer.current = setInterval(() => {
-      if (time.sec === 0) {
-        clearInterval(secTimer.current);
-        return;
-      }
-      setTime((prev) => {
-        return {
-          ...prev,
-          ["sec"]: prev.sec - 1,
-        };
-      });
-    }, 1000);
-  };
-
-  const minTimerFun = (): void => {
-    minTimer.current = setInterval(() => {
-      if (time.min === 0) {
-        setTime((prev) => {
-          return {
-            ...prev,
-            min: 0,
-            sec: 59,
-          };
-        });
-        clearInterval(minTimer.current);
-        return;
-      }
-      setTime((prev) => {
-        return {
-          ...prev,
-          ["min"]: prev.min - 1,
-        };
-      });
-    }, 1000 * 3);
-  };
-
-  const hourTimerFun = (): void => {
-    hourTimer.current = setInterval(() => {
-      if (time.hour === 0) {
-        setTime((prev) => {
-          return {
-            ...prev,
-            min: 0,
-            sec: 59,
-          };
-        });
-        clearInterval(hourTimer.current);
-      }
-      setTime((prev) => {
-        return {
-          ...prev,
-          ["hour"]: prev.hour - 1,
-        };
-      });
-    }, 1000 * 2 * 2);
+    setTime(timeClone);
   };
 
   const startHandler = (): void => {
-    if (isStarted) {
-      setIsStarted(false);
-      resetHandler();
-    }
-    const { sec, hour, min } = time;
-    if (sec > 0) {
-      secTimerFun();
-    }
-
-    if (min > 0) {
-      minTimerFun();
-    }
-
-    if (hour > 0) {
-      hourTimerFun();
-    }
+    setIsStarted(!isStarted);
   };
 
   const resetHandler = (): void => {
-    secTimer.current && clearInterval(secTimer.current);
-    minTimer.current && clearInterval(minTimer.current);
-    hourTimer.current && clearInterval(hourTimer.current);
+    timerRef.current && clearInterval(timerRef.current);
 
     setIsStarted(false);
     setTime({
@@ -160,44 +90,7 @@ const StopwatchContainer = () => {
     });
   };
 
-  return (
-    <div className="text-center">
-      <h2>Timer App</h2>
-      <input
-        className="text-center p-4 h-16 w-16 m-4 text-black border border-black rounded-sm"
-        type="text"
-        placeholder="HH"
-        name="hour"
-        value={time.hour}
-        onChange={setTimeHandler}
-        pattern="[0-9]*"
-      />{" "}
-      :
-      <input
-        className="text-center p-4 h-16 w-16 m-4 text-black border border-black rounded-sm"
-        type="text"
-        placeholder="MM"
-        name="min"
-        value={time.min}
-        onChange={setTimeHandler}
-        pattern="[0-9]*"
-      />{" "}
-      :
-      <input
-        className="text-center p-4 h-16 w-16 m-4 text-black border border-black rounded-sm"
-        type="text"
-        placeholder="SS"
-        name="sec"
-        value={time.sec}
-        onChange={setTimeHandler}
-        pattern="[0-9]*"
-      />
-      <div className="flex justify-between">
-        <Button onClick={startHandler}>{isStarted ? "Pause" : "Start"}</Button>
-        <Button onClick={resetHandler}>Reset</Button>
-      </div>
-    </div>
-  );
+  return <Stopwatch time={time} resetHandler={resetHandler} startHandler={startHandler} setTimeHandler={setTimeHandler} isStarted={isStarted} />;
 };
 
 export default StopwatchContainer;
