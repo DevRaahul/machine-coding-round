@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { number } from "zod";
 
@@ -8,9 +8,9 @@ interface ITimerState {
   sec: number;
 }
 const StopwatchContainer = () => {
-  let secTimer: ReturnType<typeof setInterval>;
-  let minTimer: ReturnType<typeof setInterval>;
-  let hourTimer: ReturnType<typeof setInterval>;
+  let secTimer = useRef<ReturnType<typeof setInterval>>();
+  let minTimer = useRef<ReturnType<typeof setInterval>>();
+  let hourTimer = useRef<ReturnType<typeof setInterval>>();
 
   const [time, setTime] = useState<ITimerState>({
     hour: 0,
@@ -18,6 +18,15 @@ const StopwatchContainer = () => {
     sec: 0,
   });
   const [isStarted, setIsStarted] = useState<boolean>(false);
+
+  const convertMin = (userInput: number, obj: ITimerState): void => {
+    let hour = Math.floor(userInput / 60);
+    let min = userInput % 60;
+
+    obj.hour = hour + time.hour;
+    obj.min = min;
+    setTime({ ...obj });
+  };
 
   const setTimeHandler = (eve: React.ChangeEvent<HTMLInputElement>): void => {
     const { value, name } = eve.target;
@@ -48,25 +57,26 @@ const StopwatchContainer = () => {
 
       obj.min = min + time.min;
       obj.sec = actualSec;
+
+      if (obj.min > 60) {
+        convertMin(userInput, obj);
+      }
+
       setTime({ ...obj });
     }
 
     if (name === "min" && userInput >= 60) {
-      let hour = Math.floor(userInput / 60);
-      let min = userInput % 60;
-
-      obj.hour = hour + time.hour;
-      obj.min = min;
-      setTime({ ...obj });
+      convertMin(userInput, obj);
     }
   };
 
   const secTimerFun = (): void => {
-    secTimer = setInterval(() => {
+    secTimer.current = setInterval(() => {
+      if (time.sec === 0) {
+        clearInterval(secTimer.current);
+        return;
+      }
       setTime((prev) => {
-        if (prev.sec === 0) {
-          clearInterval(secTimer);
-        }
         return {
           ...prev,
           ["sec"]: prev.sec - 1,
@@ -76,37 +86,46 @@ const StopwatchContainer = () => {
   };
 
   const minTimerFun = (): void => {
-    minTimer = setInterval(() => {
+    minTimer.current = setInterval(() => {
+      if (time.min === 0) {
+        setTime((prev) => {
+          return {
+            ...prev,
+            min: 0,
+            sec: 59,
+          };
+        });
+        clearInterval(minTimer.current);
+        return;
+      }
       setTime((prev) => {
-        if (prev.min === 1) {
-          setTime((prev) => {
-            return {
-              ...prev,
-              min: 0,
-              sec: 59,
-            };
-          });
-          secTimerFun();
-          clearInterval(minTimer);
-        }
         return {
           ...prev,
           ["min"]: prev.min - 1,
         };
       });
-    }, 1000 * 60);
+    }, 1000 * 3);
   };
 
   const hourTimerFun = (): void => {
-    hourTimer = setInterval(() => {
+    hourTimer.current = setInterval(() => {
+      if (time.hour === 0) {
+        setTime((prev) => {
+          return {
+            ...prev,
+            min: 0,
+            sec: 59,
+          };
+        });
+        clearInterval(hourTimer.current);
+      }
       setTime((prev) => {
-        if (prev.hour === 1) clearInterval(hourTimer);
         return {
           ...prev,
-          ["hour"]: prev.min - 1,
+          ["hour"]: prev.hour - 1,
         };
       });
-    }, 1000 * 60 * 60);
+    }, 1000 * 2 * 2);
   };
 
   const startHandler = (): void => {
@@ -114,30 +133,24 @@ const StopwatchContainer = () => {
       setIsStarted(false);
       resetHandler();
     }
+    const { sec, hour, min } = time;
+    if (sec > 0) {
+      secTimerFun();
+    }
 
-    for (let [, value] of Object.entries(time)) {
-      if (value > 0) {
-        setIsStarted(true);
-        if (time.sec > 0) {
-          secTimerFun();
-        }
+    if (min > 0) {
+      minTimerFun();
+    }
 
-        if (time.min > 0) {
-          minTimerFun();
-        }
-
-        if (time.hour > 0) {
-          hourTimerFun();
-        }
-        break;
-      }
+    if (hour > 0) {
+      hourTimerFun();
     }
   };
 
   const resetHandler = (): void => {
-    secTimer && clearInterval(secTimer);
-    minTimer && clearInterval(minTimer);
-    hourTimer && clearInterval(hourTimer);
+    secTimer.current && clearInterval(secTimer.current);
+    minTimer.current && clearInterval(minTimer.current);
+    hourTimer.current && clearInterval(hourTimer.current);
 
     setIsStarted(false);
     setTime({
