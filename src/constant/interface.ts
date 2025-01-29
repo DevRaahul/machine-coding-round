@@ -4,6 +4,7 @@ export interface IQuestion {
   path: string;
   description: string;
   techStack: string[];
+  codeUrl: string;
 }
 
 export interface IThemeIcon {

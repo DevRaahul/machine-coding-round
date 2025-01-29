@@ -32,7 +32,7 @@ const Home = () => {
               <CardFooter>
                 <div className="flex gap-8">
                   <Button onClick={() => navigateHandler(question.path)}>Open</Button>
-                  <Link className={buttonVariants({ variant: "outline" })} to={"https://github.com/DevRaahul/machine-coding-round"} target="_blank">
+                  <Link className={buttonVariants({ variant: "outline" })} to={question.codeUrl} target="_blank">
                     <Github /> GitHub Repo
                   </Link>
                 </div>
