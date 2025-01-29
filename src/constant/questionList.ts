@@ -95,4 +95,13 @@ export const questionList: IQuestion[] = [
     techStack: ["React", "Typescript", "HTML & CSS"],
     description: "This is the basic Timer app. We have implemented features of stopwatch and timer in this app.",
   },
+  {
+    id: 12,
+    name: "OTP Fields",
+    path: "/otp",
+    codeUrl: "https://github.com/DevRaahul/machine-coding-round/tree/main/src/components/questions/Stopwatch",
+    techStack: ["React", "Typescript", "HTML & CSS"],
+    description:
+      "WAP to display otp fields on UI the no. of boxes should be scalable through props. Added functionality of focus once we entered value in the box.",
+  },
 ];
