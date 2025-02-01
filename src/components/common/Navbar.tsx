@@ -2,11 +2,13 @@ import { ILogoutIcon, IThemeIcon } from "@/constant/interface";
 import { useTheme } from "@/context/themeProvider";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LogOut, Moon, Sun } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useTransition } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const { logout, isAuthenticated } = useAuth0();
+  const [, startTransition] = useTransition();
+  const navigate = useNavigate();
 
   const { setTheme } = useTheme();
   const [themeIcon, setThemeIcon] = useState("dark");
@@ -35,9 +37,13 @@ export default function Navbar() {
             <MountainIcon className="h-6 w-6" />
             <span className="sr-only">Coding Gyan</span>
             {/* TODO: Navigation checks */}
-            <Link to={"/"}>
+            <button
+              onClick={() => {
+                startTransition(() => navigate("/"));
+              }}
+            >
               <span className="text-left m-2 text-lg font-medium">Coding Gyan</span>
-            </Link>
+            </button>
           </div>
           <div className="hidden md:flex items-center gap-4">
             <ThemeIcon themeChange={themeToggle} mode={themeIcon} />

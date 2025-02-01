@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Github } from "lucide-react";
 
 const Home = () => {
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   const navigate = useNavigate();
 

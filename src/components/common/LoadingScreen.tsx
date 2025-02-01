@@ -8,6 +8,8 @@ const LoadingScreen = () => {
         <Skeleton className="rounded-lg size-[300px]"></Skeleton>
         <Skeleton className="rounded-lg size-[300px]"></Skeleton>
         <Skeleton className="rounded-lg size-[300px]"></Skeleton>
+        <Skeleton className="rounded-lg size-[300px]"></Skeleton>
+        <Skeleton className="rounded-lg size-[300px]"></Skeleton>
       </div>
     </>
   );
