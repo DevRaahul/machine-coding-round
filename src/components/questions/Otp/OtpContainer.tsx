@@ -1,11 +1,11 @@
-import { FC, useState } from "react";
+import OtpBox from "./OtpBox";
 
-interface IOtp {
-  otpFields: number;
-}
-const OtpContainer: FC<IOtp> = ({ otpFields = 6 }) => {
-  const [otp, setOtp] = useState(new Array());
-  return <div>OtpContainer</div>;
+const OtpContainer = () => {
+  return (
+    <>
+      <OtpBox otpFields={6} />
+    </>
+  );
 };
 
 export default OtpContainer;
