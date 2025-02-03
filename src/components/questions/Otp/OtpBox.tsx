@@ -1,16 +1,18 @@
+import { FC, useRef } from "react";
 import { useTheme } from "@/context/themeProvider";
-import React, { FC, useState } from "react";
 
 interface IOtp {
-  otpFields: number;
+  otp: number[] | [];
+  handleKeyPress: (e: React.KeyboardEvent<HTMLInputElement>, idx: number) => void;
+  otpBoxRef: React.RefObject<HTMLInputElement[]>;
 }
-const OtpBox: FC<IOtp> = ({ otpFields }) => {
-  const [otp, setOtp] = useState(new Array(otpFields).fill(null));
+
+const OtpBox: FC<IOtp> = ({ otp, handleKeyPress, otpBoxRef }) => {
   const { theme } = useTheme();
 
-  const handleKeyPress = (e: React.KeyboardEvent, idx: number) => {
-    if (otp[idx] !== null) return;
-    console.log(e);
+  const handleUserEvent = (e: React.KeyboardEvent<HTMLInputElement>, idx: number) => {
+    if (isNaN(parseInt(e.key))) return;
+    handleKeyPress(e, idx);
   };
 
   return (
@@ -19,14 +21,13 @@ const OtpBox: FC<IOtp> = ({ otpFields }) => {
         return (
           <>
             <input
-              id={`input-${idx}`}
+              ref={(currentInput: HTMLInputElement) => (otpBoxRef.current[idx] = currentInput)}
               key={`input-${idx}`}
               className={`size-10 border border-black rounded-md text-center ${
                 theme === "light" ? "border-black text-black" : "border-white text-black"
               }`}
-              pattern="[0-9]+"
               value={dt}
-              onKeyDown={(e) => handleKeyPress(e, idx)}
+              onKeyDown={(e) => handleUserEvent(e, idx)}
               maxLength={1}
             />
           </>
