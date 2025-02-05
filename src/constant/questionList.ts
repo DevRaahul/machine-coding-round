@@ -82,7 +82,7 @@ export const questionList: IQuestion[] = [
   {
     id: 10,
     name: "Autocomplete Component",
-    path: "/autocomplete",
+    path: "/search",
     codeUrl: "",
     techStack: ["React", "Typescript", "HTML & CSS"],
     description: "This is the basic autocomplet component. We can search any data like countries/cities and select the value",
