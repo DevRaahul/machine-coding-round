@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../components/common/Home";
 import Navbar from "../components/common/Navbar";
+import SearchBoxContainer from "@/components/questions/SearchBox/SearchBoxContainer";
 
 const MemoryBoxGame = React.lazy(() => import("../components/questions/MemoryBox/MemoryBoxGame"));
 const PageNotFound = React.lazy(() => import("../components/common/PageNotFound"));
@@ -30,6 +31,7 @@ const AppRoutes = () => {
             <Route path="/explorer" element={<FileManagerContainer />} />
             <Route path="/stopwatch" element={<StopwatchContainer />} />
             <Route path="/otp" element={<OtpContainer />} />
+            <Route path="/search" element={<SearchBoxContainer />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>
