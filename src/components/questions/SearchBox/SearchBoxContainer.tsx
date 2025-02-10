@@ -6,7 +6,7 @@ const SearchBoxContainer: FC = () => {
   const { theme } = useTheme();
 
   const getRecipe = async (query: string) => {
-    const recipeData = await fetch(`https://dummyjson.com/recipes/search?q=${query}`);
+    const recipeData = await fetch(`http://dummyjson.com/recipes/search?q=${query}`);
     const data = await recipeData.json();
     return data.recipes;
   };
