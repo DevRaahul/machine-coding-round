@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import SuggestionList from "./SuggestionList";
 
 interface ITypeAhead {
@@ -19,6 +19,7 @@ const TypeAheadComponent: FC<ITypeAhead> = (props) => {
   const [selectValue, setSelectedValue] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const timerRef = useRef<any>(null);
 
   const onChangeFunction = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = e.target;
@@ -51,12 +52,11 @@ const TypeAheadComponent: FC<ITypeAhead> = (props) => {
   };
 
   const getDebouncedFun = (fn: () => void, time: number) => {
-    let timer: any;
     return function () {
-      if (timer) {
-        clearTimeout(timer);
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
       }
-      timer = setTimeout(() => {
+      timerRef.current = setTimeout(() => {
         fn();
       }, time);
     };
