@@ -1,5 +1,5 @@
 import { FC } from "react";
-import explorer from "./fileExplorerData";
+import explorer from "../../../constant/fileExplorerData";
 import FileManager from "./FileManager";
 
 const FileManagerContainer: FC = () => {

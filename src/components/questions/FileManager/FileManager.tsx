@@ -1,4 +1,4 @@
-import { IFileData } from "./fileExplorerData";
+import { IFileData } from "../../../constant/fileExplorerData";
 
 interface IFileManager {
   data: IFileData[];
