@@ -1,7 +1,8 @@
+import FileExplorer from "./FileExplorer";
 import explorer from "../../../constant/fileExplorerData";
 
 const FileExplorerContainer = () => {
-  return <div>FileExplorerContainer</div>;
+  return <FileExplorer data={explorer} />;
 };
 
 export default FileExplorerContainer;
