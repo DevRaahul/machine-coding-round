@@ -15,7 +15,7 @@ const FileExplorer: React.FC<IFileExplorer> = ({ data, renderChildList, isOpen, 
         if (item.isFolder) {
           return (
             <>
-              <div key={item.id} className="boder-l-2 pl-2 border-gray-600">
+              <div key={item.id} className="pl-2 border-gray-600">
                 <span className="hover:cursor-pointer" onClick={() => handleOpen(item.name)}>
                   {isOpen[item.name] ? "📂" : "📁"} {item.name}
                 </span>
