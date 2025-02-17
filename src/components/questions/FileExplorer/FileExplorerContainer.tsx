@@ -33,7 +33,7 @@ const FileExplorerContainer = () => {
 
     const updateData = (list: IFileData[]): IFileData[] => {
       updatedTree = list.map((dt) => {
-        if (dt.id === id && dt.items.length >= 0) {
+        if (dt.id === id) {
           return {
             ...dt,
             items: [...dt.items, node],

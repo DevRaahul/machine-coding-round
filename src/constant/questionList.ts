@@ -99,7 +99,7 @@ export const questionList: IQuestion[] = [
     id: 12,
     name: "OTP Fields",
     path: "/otp",
-    codeUrl: "https://github.com/DevRaahul/machine-coding-round/tree/main/src/components/questions/Stopwatch",
+    codeUrl: "https://github.com/DevRaahul/machine-coding-round/tree/main/src/components/questions/Otp",
     techStack: ["React", "Typescript", "HTML & CSS"],
     description:
       "WAP to display otp fields on UI the no. of boxes should be scalable through props. Added functionality of focus once we entered value in the box.",
@@ -108,7 +108,7 @@ export const questionList: IQuestion[] = [
     id: 5,
     name: "File Manager-II",
     path: "/fileManager",
-    codeUrl: "https://github.com/DevRaahul/machine-coding-round/tree/main/src/components/questions/FileManager",
+    codeUrl: "https://github.com/DevRaahul/machine-coding-round/tree/main/src/components/questions/FileExplorer",
     techStack: ["React", "Typescript", "HTML & CSS"],
     description:
       "This is the file explorer component created to show custom file structure. We have used dummy response to mimic the folder structure response. In this we have added functionality to add and delete folders/items within folders.",
