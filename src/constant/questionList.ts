@@ -105,9 +105,27 @@ export const questionList: IQuestion[] = [
       "WAP to display otp fields on UI the no. of boxes should be scalable through props. Added functionality of focus once we entered value in the box.",
   },
   {
-    id: 5,
+    id: 13,
     name: "File Manager-II",
     path: "/fileManager",
+    codeUrl: "https://github.com/DevRaahul/machine-coding-round/tree/main/src/components/questions/FileExplorer",
+    techStack: ["React", "Typescript", "HTML & CSS"],
+    description:
+      "This is the file explorer component created to show custom file structure. We have used dummy response to mimic the folder structure response. In this we have added functionality to add and delete folders/items within folders.",
+  },
+  {
+    id: 14,
+    name: "Nested Comments",
+    path: "/nestedComms",
+    codeUrl: "https://github.com/DevRaahul/machine-coding-round/tree/main/src/components/questions/FileExplorer",
+    techStack: ["React", "Typescript", "HTML & CSS"],
+    description:
+      "This is the file explorer component created to show custom file structure. We have used dummy response to mimic the folder structure response. In this we have added functionality to add and delete folders/items within folders.",
+  },
+  {
+    id: 15,
+    name: "Tab Component",
+    path: "/tabsComponent",
     codeUrl: "https://github.com/DevRaahul/machine-coding-round/tree/main/src/components/questions/FileExplorer",
     techStack: ["React", "Typescript", "HTML & CSS"],
     description:
