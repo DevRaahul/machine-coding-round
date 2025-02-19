@@ -2,7 +2,7 @@ import { ReactElement, ReactNode, useState } from "react";
 import FileExplorer from "./FileExplorer";
 import explorer, { IFileData } from "../../../constant/fileExplorerData";
 import { Button } from "@/components/ui/button";
-import { FilePlus, FolderPlus, SquarePen, SquarePlus, Trash2 } from "lucide-react";
+import { FilePlus, FolderPlus, SquarePen, Trash2 } from "lucide-react";
 
 const FileExplorerContainer = () => {
   const [isOpen, setIsOpen] = useState<any>({});
