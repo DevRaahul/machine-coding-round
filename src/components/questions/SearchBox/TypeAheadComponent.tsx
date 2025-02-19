@@ -72,11 +72,6 @@ const TypeAheadComponent: FC<ITypeAhead> = (props) => {
     }
   }, [inputValue]);
 
-  const blurHandler = (): void => {
-    console.log("76 cal");
-    setData([]);
-  };
-
   return (
     <div className="relative">
       <label htmlFor="searchBox">

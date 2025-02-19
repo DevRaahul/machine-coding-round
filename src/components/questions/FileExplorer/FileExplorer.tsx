@@ -1,5 +1,5 @@
 import { IFileData } from "@/constant/fileExplorerData";
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 
 interface IFileExplorer {
   data: IFileData[];
