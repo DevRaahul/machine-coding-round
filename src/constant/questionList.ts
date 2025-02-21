@@ -31,7 +31,7 @@ export const questionList: IQuestion[] = [
   {
     id: 4,
     name: "Custom Progress Bar",
-    path: "/progress",
+    path: "/progressBar",
     codeUrl: "https://github.com/DevRaahul/machine-coding-round/tree/main/src/components/questions/progressBar",
     techStack: ["React", "Typescript", "HTML & CSS"],
     description:
