@@ -1,10 +1,11 @@
 import { FC } from "react";
+import ProgressBar from "./ProgressBar";
 
 const ProgressBarContainer: FC = () => {
   return (
-    <div className="w-full border-white border h-4">
-      <div></div>
-    </div>
+    <>
+      <ProgressBar progress={50} />
+    </>
   );
 };
 
