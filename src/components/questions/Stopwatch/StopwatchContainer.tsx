@@ -20,9 +20,6 @@ const StopwatchContainer = () => {
   useEffect(() => {
     if (isStarted) {
       //Start timer
-      if (time.sec === 0 && time.min === 0 && time.hour === 0) {
-        return;
-      }
       timerRef.current = setInterval(() => {
         setTime((prev) => {
           let copyTime = { ...prev };
@@ -76,6 +73,11 @@ const StopwatchContainer = () => {
   };
 
   const startHandler = (): void => {
+    if (time.sec === 0 && time.min === 0 && time.hour === 0) {
+      alert("Time can not be null.");
+      return;
+    }
+
     setIsStarted(!isStarted);
   };
 

@@ -11,7 +11,7 @@ const ProgressBar: React.FC<IProgressBar> = ({ progress }) => {
           className="flex justify-st items-center absolute size-full bg-green-600  text-right"
           style={{ transform: `translateX(${progress - 100}%)` }}
         >
-          {`${progress}%`}vjhvjhjg
+          {`${progress}%`}
         </div>
       </div>
     </>
