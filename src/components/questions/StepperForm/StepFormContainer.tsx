@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 const StepFormContainer = () => {
-  return <div>StepFormContainer</div>;
+  const [step, setStep] = useState<number>(1);
+  return <div></div>;
 };
 
 export default StepFormContainer;
