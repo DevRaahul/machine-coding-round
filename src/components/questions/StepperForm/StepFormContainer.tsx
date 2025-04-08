@@ -14,8 +14,10 @@ const StepFormContainer = () => {
       <div>
         {step === 1 && <FormOne />}
         {step === 2 && <FormTwo />}
-        {backButton}
-        {forwardButton}
+        <>
+          {backButton}
+          {forwardButton}
+        </>
       </div>
     </div>
   );
