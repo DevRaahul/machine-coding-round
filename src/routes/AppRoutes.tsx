@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../components/common/Home";
 import Navbar from "../components/common/Navbar";
@@ -15,7 +15,7 @@ const OtpContainer = React.lazy(() => import("../components/questions/Otp/OtpCon
 const SearchBoxContainer = React.lazy(() => import("../components/questions/SearchBox/SearchBoxContainer"));
 const FileExplorerContainer = React.lazy(() => import("../components/questions/FileExplorer/FileExplorerContainer"));
 
-const AppRoutes = () => {
+const AppRoutes: FC = () => {
   return (
     <>
       <BrowserRouter>
