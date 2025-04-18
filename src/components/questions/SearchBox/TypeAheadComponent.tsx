@@ -97,3 +97,5 @@ const TypeAheadComponent: FC<ITypeAhead> = (props) => {
 };
 
 export default TypeAheadComponent;
+
+// search box
